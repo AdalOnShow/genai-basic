@@ -1,4 +1,3 @@
-import os
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
@@ -7,8 +6,7 @@ from langchain_core.prompts import ChatPromptTemplate
 load_dotenv()
 
 # Initialize the Groq LLM client
-# Popular models include: llama3-8b-8192, llama3-70b-8192, mixtral-8x7b-32768
-llm = ChatGroq(model="llama-3.1-8b-instant", temperature=0.8)
+llm = ChatGroq(model="llama-3.1-8b-instant", temperature=0.8, max_tokens=20)
 
 # Build a prompt template
 prompt = ChatPromptTemplate.from_messages(
@@ -17,6 +15,6 @@ prompt = ChatPromptTemplate.from_messages(
 
 # Create the chain and invoke it
 chain = prompt | llm
-response = chain.invoke({"input": "Hello! Give me a 1-sentence productivity tip."})
+response = chain.invoke({"input": "Hello! Give me a ai pome."})
 
 print(response.content)
